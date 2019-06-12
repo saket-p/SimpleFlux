@@ -3,20 +3,20 @@ export default class Observable {
         this.observers = [];
     }
 
-    subscribe(observer){
+    addObserver(observer){
         this.observers.push(observer);
     }
 
-    unSubscribe(observer) {
+    removeObserver(observer) {
         this.observers = this.observers.filter(o => o != observer);
     }
 
-    publish(data) {
-        console.group("Publishing changes");
+    notifyObservers(data) {
+        console.group("Notifying changes");
         console.log(`Data: ${JSON.stringify(data)}`);
         this.observers.forEach(observer => {
-            console.log(`Publishing to: ${observer}`)
-            observer(data);
+            console.log(`Observer: ${observer.constructor.name}`);
+            observer.getNotifiedWith(data);
         });
         console.groupEnd();
     }

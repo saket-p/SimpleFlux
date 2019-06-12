@@ -1,4 +1,4 @@
-import Observable from './Observable.js';
+import { Observable } from '../utils/observation/index.js';
 
 export default class Store extends Observable {
     constructor({ state }) {
@@ -16,7 +16,7 @@ export default class Store extends Observable {
             console.log(`Current State: ${JSON.stringify(state)}`);
             console.groupEnd();
 
-            this.publish(state);
+            this.notifyObservers(state);
             
             return true;
         }
