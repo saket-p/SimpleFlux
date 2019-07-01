@@ -1,6 +1,6 @@
-import { Observable } from '../utils/observation/index.js';
+import { Publisher } from '../utils/pubsub/index.js';
 
-export default class Store extends Observable {
+export default class Store extends Publisher {
     constructor({ state }) {
         super();   
         this.state = this.trap(state || {});
@@ -16,7 +16,7 @@ export default class Store extends Observable {
             console.log(`Current State: ${JSON.stringify(state)}`);
             console.groupEnd();
 
-            this.notifyObservers(state);
+            this.notifySubscribers(key, value);
             
             return true;
         }

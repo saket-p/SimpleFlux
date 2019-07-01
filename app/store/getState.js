@@ -1,7 +1,9 @@
 const initialState = {
-    greeting: {
-        message: 'Hello',
-        name: 'World'
+    counter1: {
+        value: 0
+    },
+    counter2: {
+        value: 0
     }
 };
 

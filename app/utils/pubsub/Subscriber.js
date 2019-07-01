@@ -1,4 +1,4 @@
-import Observable from './Observable.js';
+import Publisher from './Publisher.js';
 
 /**
  * Note: Sub classes should override getNotifiedWith() to return callaback, via which they would get notified
@@ -8,13 +8,17 @@ import Observable from './Observable.js';
  * rather than on prototype. This leads to Observer::update() getting registered as subscriber, instead of Subclass::update()
  *  
  */
-export default class Observer {
-    constructor(observable) {
-        if(observable instanceof Observable) {
-            observable.addObserver(this);
+export default class Subscriber {
+    constructor(publisher) {
+        if(publisher instanceof Publisher) {
+            this.publisher = publisher
         } else {
-            console.error(observable, " is not a Observable");
+            console.error(publisher, " is not a Publisher");
         }
+    }
+
+    subscribeTo(subject) {
+        this.publisher.addSubscriberToSubject(subject, this);
     }
 
     getNotifiedWith(notificationData) {

@@ -3,8 +3,7 @@ import Component from './Component.js';
 export default class App extends Component {
     constructor(params) {
         super(params);
-        this.element = params.element;
-        
+        this.subscribeTo('greeting');
         setTimeout(() => this.changeName(), 5000);
     }
 
@@ -16,10 +15,10 @@ export default class App extends Component {
     }
 
     render() {
-        this.element.innerHTML = this.renderTemplate(this.state.greeting);
+        this.element.innerHTML = App.markUp(this.state.greeting);
     }
 
-    renderTemplate(t) {
+    static markUp(t) {
         return `<h2>
             <span>${t.message} ${t.name}</span>
         </h2>`

@@ -1,0 +1,82 @@
+:root {
+    --lightGrey: #A8A7A8;
+    --mediumGrey: #474747;
+    --largeGrey: #363636;
+    --blue: #2F9395;
+    --yellow: #F7D969;
+    --orange: #F16A43;
+    --red: #E8175D;
+    --magenta: #A6206A;
+    --grid-item-width: 300px; 
+    --wrapper-sidespace: calc(45vw - var(--grid-item-width))
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Arial, Geneva, sans-serif;
+    font-size: calc(16px + 0.5vw);
+    line-height: calc(1.1em + 0.5vw);
+}
+
+.wrapper {
+    display: grid;
+    min-height: calc(100vh - 2em);
+    background-color: var(--lightGrey);
+    margin: 2rem;
+    padding: 10vh var(--wrapper-sidespace) 10vh var(--wrapper-sidespace);;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, var(--grid-item-width));
+    justify-content: center;
+    align-items: center;
+}
+
+.counter {
+    align-self: end;
+}
+
+#counter3 {
+    grid-column: 1 /-1;
+    align-self: start;
+}
+
+.counter .counterVal {
+    text-align: center;
+    background-color: var(--largeGrey);
+    border-radius: 3px 3px 0px 0px;
+    color: #fff;
+    padding: 1rem 0 1rem 0;
+}
+
+.counter .controls {
+    display: flex;
+}
+
+.controls button {
+    width: 50%;
+    flex: 1;
+    padding: 1rem 0 1rem 0;
+    border: 0;
+    cursor: pointer;
+}
+
+button.increase {
+    background-color: var(--blue);
+}
+
+button.decrease {
+    background-color: var(--orange);
+}
+
+button.reset {
+    background-color: var(--red);
+}
